@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PT Cahaya Langit | General Contractor & Supplier</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        obsidian: '#0B0F19',
+                        surface: '#131B2E',
+                        champagne: '#D4AF37',
+                        'champagne-light': '#F3E5AB',
+                    },
+                    fontFamily: {
+                        outfit: ['Outfit', 'sans-serif'],
+                        jakarta: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'luxury': '0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(212, 175, 55, 0.05)',
+                        'glow': '0 0 25px -5px rgba(212, 175, 55, 0.3)',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #0B0F19;
+            color: #F3F4F6;
+        }
+        h1, h2, h3, h4, h5, h6, .font-heading {
+            font-family: 'Outfit', sans-serif;
+        }
+        .glass-card {
+            background: rgba(19, 27, 46, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-nav {
+            background: rgba(11, 15, 25, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #F3E5AB 0%, #D4AF37 50%, #AA7C11 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-gradient-bg {
+            background: linear-gradient(135deg, #D4AF37 0%, #AA7C11 100%);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0B0F19;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1B263B;
+            border-radius: 4px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D4AF37;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden antialiased">
+
+    <!-- 1. NAVIGATION BAR -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl gold-gradient-bg flex items-center justify-center text-obsidian shadow-glow transition-transform duration-300 group-hover:scale-105">
+                    <i class="bi bi-building-fill text-xl"></i>
+                </div>
+                <div>
+                    <span class="font-heading text-lg sm:text-xl font-bold tracking-wider text-white block leading-none">PT CAHAYA LANGIT</span>
+                    <span class="text-xs text-champagne tracking-widest uppercase font-semibold">General Contractor</span>
+                </div>
+            </a>
+
+            <!-- Desktop Menu Links -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
+                <a href="#beranda" class="hover:text-champagne transition-colors">Beranda</a>
+                <a href="#layanan" class="hover:text-champagne transition-colors">Layanan</a>
+                <a href="#portofolio" class="hover:text-champagne transition-colors">Portofolio</a>
+                <a href="#tentang" class="hover:text-champagne transition-colors">Tentang Kami</a>
+                <a href="#kontak" class="hover:text-champagne transition-colors">Kontak</a>
+            </nav>
+
+            <!-- CTA Button -->
+            <div class="hidden md:flex items-center gap-4">
+                <button onclick="openModal('Konsultasi Proyek')" class="relative px-6 py-2.5 rounded-xl border border-champagne text-champagne font-semibold text-sm transition-all duration-300 hover:bg-champagne hover:text-obsidian shadow-glow hover:shadow-luxury">
+                    Konsultasi Proyek
+                </button>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="menu-btn" class="md:hidden text-2xl text-gray-200 focus:outline-none p-2">
+                <i class="bi bi-list"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden glass-card border-t border-white/10 px-6 py-6 space-y-4">
+            <a href="#beranda" class="block text-gray-200 hover:text-champagne font-medium py-2 mobile-link">Beranda</a>
+            <a href="#layanan" class="block text-gray-200 hover:text-champagne font-medium py-2 mobile-link">Layanan</a>
+            <a href="#portofolio" class="block text-gray-200 hover:text-champagne font-medium py-2 mobile-link">Portofolio</a>
+            <a href="#tentang" class="block text-gray-200 hover:text-champagne font-medium py-2 mobile-link">Tentang Kami</a>
+            <a href="#kontak" class="block text-gray-200 hover:text-champagne font-medium py-2 mobile-link">Kontak</a>
+            <div class="pt-4 border-t border-white/10">
+                <button onclick="openModal('Konsultasi Proyek')" class="w-full py-3 rounded-xl gold-gradient-bg text-obsidian font-bold text-sm shadow-glow">
+                    Konsultasi Proyek
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- 2. HERO SECTION -->
+        <section id="beranda" class="relative min-h-screen pt-32 pb-20 flex items-center overflow-hidden">
+            <!-- Background Decorative Glows -->
+            <div class="absolute top-1/4 left-10 w-96 h-96 bg-champagne/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute bottom-10 right-10 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    <!-- Left Content -->
+                    <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
+                        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border border-champagne/30 text-champagne text-xs sm:text-sm font-medium tracking-wide shadow-luxury">
+                            <i class="bi bi-star-fill text-xs"></i>
+                            <span>Elite General Contractor & Premium Supplier</span>
+                        </div>
+                        
+                        <h1 class="font-heading text-4xl sm:text-6xl font-extrabold tracking-tight leading-[1.1]">
+                            Membangun <span class="gold-gradient-text">Mahakarya Konstruksi</span> dengan Presisi & Kemewahan
+                        </h1>
+
+                        <p class="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                            Mitra terpercaya untuk proyek komersial, residensial mewah, dan infrastruktur tingkat tinggi. Kami menghadirkan standar kualitas dunia dengan estetika arsitektur tanpa kompromi.
+                        </p>
+
+                        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                            <button onclick="openModal('Mulai Konsultasi')" class="w-full sm:w-auto px-8 py-4 rounded-xl gold-gradient-bg text-obsidian font-bold text-base transition-all duration-300 shadow-glow hover:scale-105 flex items-center justify-center gap-3">
+                                <span>Mulai Konsultasi</span>
+                                <i class="bi bi-arrow-right font-bold"></i>
+                            </button>
+                            <a href="#portofolio" class="w-full sm:w-auto px-8 py-4 rounded-xl glass-card border border-white/20 text-white font-semibold text-base transition-all duration-300 hover:bg-white/5 hover:border-champagne/50 text-center">
+                                Lihat Portofolio
+                            </a>
+                        </div>
+
+                        <!-- Key Metrics -->
+                        <div class="grid grid-cols-3 gap-6 pt-8 border-t border-white/10 max-w-lg mx-auto lg:mx-0">
+                            <div>
+                                <h3 class="font-heading text-2xl sm:text-3xl font-bold text-white">15+</h3>
+                                <p class="text-xs sm:text-sm text-gray-400 mt-1">Tahun Pengalaman</p>
+                            </div>
+                            <div>
+                                <h3 class="font-heading text-2xl sm:text-3xl font-bold text-white">120+</h3>
+                                <p class="text-xs sm:text-sm text-gray-400 mt-1">Proyek Selesai</p>
+                            </div>
+                            <div>
+                                <h3 class="font-heading text-2xl sm:text-3xl font-bold text-white">100%</h3>
+                                <p class="text-xs sm:text-sm text-gray-400 mt-1">Standar Mutu</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Visual Mockup -->
+                    <div class="lg:col-span-5 relative">
+                        <div class="relative mx-auto max-w-md lg:max-w-none">
+                            <!-- Glassmorphism Container Frame -->
+                            <div class="glass-card p-4 rounded-3xl shadow-luxury border border-white/10 relative z-10 overflow-hidden group">
+                                <div class="relative h-[420px] rounded-2xl overflow-hidden">
+                                    <img src="https://i.pinimg.com/736x/ca/40/58/ca4058e7d381012c2b5def6b8eb2da33.jpg" alt="Luxury Architecture Project" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-[#0B0F19] via-transparent to-transparent opacity-80"></div>
+                                    
+                                    <!-- Floating Info Card inside Image -->
+                                    <div class="absolute bottom-6 left-6 right-6 p-4 rounded-xl glass-card border border-white/20 flex items-center justify-between">
+                                        <div>
+                                            <span class="text-xs text-champagne font-semibold tracking-wider uppercase">Proyek Unggulan</span>
+                                            <h4 class="text-white font-heading font-bold text-sm sm:text-base">Summarecon Grand Tower</h4>
+                                        </div>
+                                        <div class="w-10 h-10 rounded-lg gold-gradient-bg flex items-center justify-center text-obsidian font-bold">
+                                            <i class="bi bi-shield-check text-lg"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Decorative Back Glow -->
+                            <div class="absolute -inset-2 bg-gradient-to-r from-champagne to-blue-600 rounded-3xl blur-2xl opacity-20 -z-10 animate-pulse"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. BRAND TRUST / CLIENT LOGOS -->
+        <section class="py-16 border-y border-white/10 bg-[#070A12]/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <p class="text-center text-xs sm:text-sm font-semibold tracking-widest text-gray-400 uppercase mb-10">Dipercaya oleh Perusahaan Terkemuka & Developer Properti Nasional</p>
+                
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-8 items-center justify-items-center opacity-70">
+                    <div class="flex items-center gap-2 text-xl font-heading font-bold text-gray-400 hover:text-champagne transition-all cursor-pointer">
+                        <i class="bi bi-buildings text-2xl text-champagne"></i> SUMMARECON
+                    </div>
+                    <div class="flex items-center gap-2 text-xl font-heading font-bold text-gray-400 hover:text-champagne transition-all cursor-pointer">
+                        <i class="bi bi-gem text-2xl text-champagne"></i> AGUNG SEDAYU
+                    </div>
+                    <div class="flex items-center gap-2 text-xl font-heading font-bold text-gray-400 hover:text-champagne transition-all cursor-pointer">
+                        <i class="bi bi-hexagon-fill text-2xl text-champagne"></i> CIPUTRA GROUP
+                    </div>
+                    <div class="flex items-center gap-2 text-xl font-heading font-bold text-gray-400 hover:text-champagne transition-all cursor-pointer">
+                        <i class="bi bi-shield-shaded text-2xl text-champagne"></i> SINAR MAS
+                    </div>
+                    <div class="flex items-center gap-2 text-xl font-heading font-bold text-gray-400 hover:text-champagne transition-all cursor-pointer col-span-2 md:col-span-1">
+                        <i class="bi bi-award text-2xl text-champagne"></i> PAKUWON JATI
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. CORE FEATURES / SERVICES -->
+        <section id="layanan" class="py-24 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Section Header -->
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                    <span class="text-champagne font-semibold text-xs sm:text-sm tracking-widest uppercase">Layanan Unggulan Kami</span>
+                    <h2 class="font-heading text-3xl sm:text-5xl font-extrabold tracking-tight">Solusi Konstruksi & Material <span class="gold-gradient-text">Kelas Dunia</span></h2>
+                    <p class="text-gray-400 text-base sm:text-lg">Kami menyediakan layanan komprehensif mulai dari perencanaan arsitektur, pelaksanaan konstruksi sipil, hingga suplai material premium.</p>
+                </div>
+
+                <!-- 3-Column Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Card 1 -->
+                    <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:-translate-y-2 hover:border-champagne/50 shadow-luxury group">
+                        <div class="w-14 h-14 rounded-xl gold-gradient-bg flex items-center justify-center text-obsidian text-2xl font-bold mb-6 shadow-glow transition-transform group-hover:scale-110">
+                            <i class="bi bi-building"></i>
+                        </div>
+                        <h3 class="font-heading text-xl font-bold text-white mb-3">General Construction</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">Pembangunan gedung komersial, fasilitas industri, perkantoran, dan hunian mewah dengan standar teknik sipil tertinggi dan pengawasan ketat.</p>
+                        <a href="#kontak" onclick="openModal('General Construction')" class="inline-flex items-center gap-2 text-champagne font-semibold text-sm hover:underline">
+                            <span>Pelajari Lebih Lanjut</span>
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:-translate-y-2 hover:border-champagne/50 shadow-luxury group">
+                        <div class="w-14 h-14 rounded-xl gold-gradient-bg flex items-center justify-center text-obsidian text-2xl font-bold mb-6 shadow-glow transition-transform group-hover:scale-110">
+                            <i class="bi bi-brush"></i>
+                        </div>
+                        <h3 class="font-heading text-xl font-bold text-white mb-3">Interior Design & Build</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">Transformasi ruang interior eksklusif yang memadukan estetika modern, fungsionalitas optimal, dan sentuhan material mewah pilihan.</p>
+                        <a href="#kontak" onclick="openModal('Interior Design & Build')" class="inline-flex items-center gap-2 text-champagne font-semibold text-sm hover:underline">
+                            <span>Pelajari Lebih Lanjut</span>
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="glass-card p-8 rounded-2xl transition-all duration-300 hover:-translate-y-2 hover:border-champagne/50 shadow-luxury group">
+                        <div class="w-14 h-14 rounded-xl gold-gradient-bg flex items-center justify-center text-obsidian text-2xl font-bold mb-6 shadow-glow transition-transform group-hover:scale-110">
+                            <i class="bi bi-box-seam"></i>
+                        </div>
+                        <h3 class="font-heading text-xl font-bold text-white mb-3">Premium Material Supply</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">Penyediaan material bangunan berkualitas tinggi, marmer impor, baja struktural, dan perlengkapan arsitektur berstandar internasional.</p>
+                        <a href="#kontak" onclick="openModal('Premium Material Supply')" class="inline-flex items-center gap-2 text-champagne font-semibold text-sm hover:underline">
+                            <span>Pelajari Lebih Lanjut</span>
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. SHOWCASE / PORTFOLIO -->
+        <section id="portofolio" class="py-24 bg-[#070A12]/60 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Section Header -->
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                    <span class="text-champagne font-semibold text-xs sm:text-sm tracking-widest uppercase">Portofolio Mahakarya</span>
+                    <h2 class="font-heading text-3xl sm:text-5xl font-extrabold tracking-tight">Jejak Langkah <span class="gold-gradient-text">Prestasi Konstruksi</span></h2>
+                    <p class="text-gray-400 text-base sm:text-lg">Eksplorasi sebagian proyek prestisius yang telah kami selesaikan dengan ketepatan waktu dan presisi tanpa cela.</p>
+                </div>
+
+                <!-- Portfolio Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Project 1 -->
+                    <div class="glass-card rounded-2xl overflow-hidden group shadow-luxury border border-white/10">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="https://placehold.co/600x400/131B2E/D4AF37?text=Commercial+Building" alt="Commercial Building" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#0B0F19] via-transparent to-transparent opacity-70"></div>
+                            <span class="absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-semibold gold-gradient-bg text-obsidian shadow-glow">Komersial</span>
+                        </div>
+                        <div class="p-6 space-y-2">
+                            <h3 class="font-heading text-xl font-bold text-white">Summarecon Business Tower</h3>
+                            <p class="text-gray-400 text-sm">Pembangunan gedung perkantoran 24 lantai dengan fasad modern dan struktur tahan gempa.</p>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="glass-card rounded-2xl overflow-hidden group shadow-luxury border border-white/10">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="https://placehold.co/600x400/131B2E/D4AF37?text=Luxury+Residence" alt="Luxury Residence" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#0B0F19] via-transparent to-transparent opacity-70"></div>
+                            <span class="absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-semibold gold-gradient-bg text-obsidian shadow-glow">Residensial</span>
+                        </div>
+                        <div class="p-6 space-y-2">
+                            <h3 class="font-heading text-xl font-bold text-white">The Royal Sky Residence</h3>
+                            <p class="text-gray-400 text-sm">Cluster hunian mewah privat lengkap dengan lansekap eksklusif dan interior kustom.</p>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="glass-card rounded-2xl overflow-hidden group shadow-luxury border border-white/10">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="https://placehold.co/600x400/131B2E/D4AF37?text=Infrastructure" alt="Infrastructure" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#0B0F19] via-transparent to-transparent opacity-70"></div>
+                            <span class="absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-semibold gold-gradient-bg text-obsidian shadow-glow">Infrastruktur</span>
+                        </div>
+                        <div class="p-6 space-y-2">
+                            <h3 class="font-heading text-xl font-bold text-white">Boulevard Interchange Plaza</h3>
+                            <p class="text-gray-400 text-sm">Pengembangan infrastruktur kawasan komersial terpadu bernilai tinggi.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. TESTIMONIALS -->
+        <section class="py-24 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Section Header -->
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                    <span class="text-champagne font-semibold text-xs sm:text-sm tracking-widest uppercase">Testimoni Klien</span>
+                    <h2 class="font-heading text-3xl sm:text-5xl font-extrabold tracking-tight">Kepuasan & <span class="gold-gradient-text">Kepercayaan Klien</span></h2>
+                    <p class="text-gray-400 text-base sm:text-lg">Apa kata para pemimpin proyek dan developer terkemuka mengenai kolaborasi bersama PT Cahaya Langit.</p>
+                </div>
+
+                <!-- Testimonials Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Testimonial 1 -->
+                    <div class="glass-card p-8 rounded-2xl shadow-luxury border border-white/10 flex flex-col justify-between">
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-1 text-champagne text-lg">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <p class="text-gray-300 italic text-base sm:text-lg font-light leading-relaxed">
+                                "PT Cahaya Langit menunjukkan profesionalisme luar biasa dalam menangani proyek komersial kami. Ketepatan waktu, kualitas material, serta koordinasi tim sangat memuaskan."
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-4 pt-6 mt-6 border-t border-white/10">
+                            <div class="w-12 h-12 rounded-full gold-gradient-bg flex items-center justify-center text-obsidian font-bold text-lg">
+                                <i class="bi bi-person-fill"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-heading font-bold text-white">Ir. Hendra Kusuma</h4>
+                                <p class="text-xs text-champagne">Direktur Utama, PT Graha Megah Mandiri</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 2 -->
+                    <div class="glass-card p-8 rounded-2xl shadow-luxury border border-white/10 flex flex-col justify-between">
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-1 text-champagne text-lg">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <p class="text-gray-300 italic text-base sm:text-lg font-light leading-relaxed">
+                                "Sebagai supplier material dan kontraktor utama, mereka memiliki standar kualitas yang sangat ketat. Hasil akhir bangunan terbukti mewah dan sangat presisi."
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-4 pt-6 mt-6 border-t border-white/10">
+                            <div class="w-12 h-12 rounded-full gold-gradient-bg flex items-center justify-center text-obsidian font-bold text-lg">
+                                <i class="bi bi-person-fill"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-heading font-bold text-white">Elena Wijaya, B.Arch</h4>
+                                <p class="text-xs text-champagne">Principal Architect, Archilux Studio</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. PRICING / CALL-TO-ACTION BANNER -->
+        <section class="py-20 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="relative rounded-3xl overflow-hidden glass-card p-10 sm:p-16 border border-champagne/30 shadow-luxury text-center">
+                    <!-- Background Glow inside Banner -->
+                    <div class="absolute inset-0 bg-gradient-to-r from-champagne/10 via-surface to-champagne/5 pointer-events-none"></div>
+                    
+                    <div class="relative z-10 max-w-3xl mx-auto space-y-6">
+                        <span class="text-champagne font-semibold text-xs sm:text-sm tracking-widest uppercase">Wujudkan Visi Anda</span>
+                        <h2 class="font-heading text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+                            Siap Memulai Proyek Konstruksi Impian Bersama Kami?
+                        </h2>
+                        <p class="text-gray-300 text-base sm:text-lg">
+                            Dapatkan konsultasi mendalam dan estimasi RAB transparan bersama tim ahli arsitek dan insinyur PT Cahaya Langit.
+                        </p>
+                        <div class="pt-4 flex flex-col sm:flex-row justify-center gap-4">
+                            <button onclick="openModal('Jadwalkan Konsultasi')" class="px-8 py-4 rounded-xl gold-gradient-bg text-obsidian font-bold text-base shadow-glow hover:scale-105 transition-all">
+                                Jadwalkan Konsultasi Sekarang
+                            </button>
+                            <a href="#kontak" class="px-8 py-4 rounded-xl glass-card border border-white/20 text-white font-semibold text-base hover:bg-white/5 transition-all text-center">
+                                Hubungi Tim Ahli
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. FOOTER & CONTACT -->
+        <footer id="kontak" class="bg-[#05070D] border-t border-white/10 pt-20 pb-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pb-16 border-b border-white/10">
+                    <!-- Company Info -->
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl gold-gradient-bg flex items-center justify-center text-obsidian shadow-glow">
+                                <i class="bi bi-building-fill text-xl"></i>
+                            </div>
+                            <div>
+                                <span class="font-heading text-lg font-bold tracking-wider text-white block leading-none">PT CAHAYA LANGIT</span>
+                                <span class="text-xs text-champagne tracking-widest uppercase font-semibold">General Contractor</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Penyedia jasa konstruksi umum dan supplier material terkemuka dengan komitmen penuh terhadap kualitas, kemewahan, dan ketepatan waktu.
+                        </p>
+                        <div class="flex items-center gap-3">
+                            <a href="#" class="w-10 h-10 rounded-xl glass-card border border-white/10 flex items-center justify-center text-gray-300 hover:text-champagne hover:border-champagne transition-all">
+                                <i class="bi bi-linkedin"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-xl glass-card border border-white/10 flex items-center justify-center text-gray-300 hover:text-champagne hover:border-champagne transition-all">
+                                <i class="bi bi-instagram"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-xl glass-card border border-white/10 flex items-center justify-center text-gray-300 hover:text-champagne hover:border-champagne transition-all">
+                                <i class="bi bi-whatsapp"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-xl glass-card border border-white/10 flex items-center justify-center text-gray-300 hover:text-champagne hover:border-champagne transition-all">
+                                <i class="bi bi-envelope-fill"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Quick Links -->
+                    <div class="space-y-6">
+                        <h4 class="font-heading text-lg font-bold text-white tracking-wide">Navigasi Utama</h4>
+                        <ul class="space-y-3 text-sm text-gray-400">
+                            <li><a href="#beranda" class="hover:text-champagne transition-colors">Beranda</a></li>
+                            <li><a href="#layanan" class="hover:text-champagne transition-colors">Layanan & Keahlian</a></li>
+                            <li><a href="#portofolio" class="hover:text-champagne transition-colors">Portofolio Mahakarya</a></li>
+                            <li><a href="#tentang" class="hover:text-champagne transition-colors">Tentang Perusahaan</a></li>
+                            <li><a href="#kontak" class="hover:text-champagne transition-colors">Hubungi Kami</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Contact Details -->
+                    <div class="space-y-6">
+                        <h4 class="font-heading text-lg font-bold text-white tracking-wide">Kantor Pusat</h4>
+                        <ul class="space-y-4 text-sm text-gray-400">
+                            <li class="flex items-start gap-3">
+                                <i class="bi bi-geo-alt-fill text-champagne text-lg mt-0.5"></i>
+                                <span>Summarecon Business Park A1 No. 102-D</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="bi bi-telephone-fill text-champagne text-lg"></i>
+                                <span>+6221 537746</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="bi bi-envelope-fill text-champagne text-lg"></i>
+                                <span>info@cahayalangit.com</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="bi bi-globe text-champagne text-lg"></i>
+                                <span>cahayalangit.com</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Quick Inquiry Form -->
+                    <div class="space-y-6">
+                        <h4 class="font-heading text-lg font-bold text-white tracking-wide">Kirim Pesan Cepat</h4>
+                        <form onsubmit="handleQuickSubmit(event)" class="space-y-3">
+                            <input type="text" placeholder="Nama Anda" required class="w-full px-4 py-2.5 rounded-xl glass-card border border-white/10 text-white placeholder-gray-500 text-sm focus:outline-none focus:border-champagne">
+                            <input type="email" placeholder="Email Anda" required class="w-full px-4 py-2.5 rounded-xl glass-card border border-white/10 text-white placeholder-gray-500 text-sm focus:outline-none focus:border-champagne">
+                            <button type="submit" class="w-full py-2.5 rounded-xl gold-gradient-bg text-obsidian font-bold text-sm shadow-glow transition-transform hover:scale-105">
+                                Kirim Pesan
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Copyright -->
+                <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500">
+                    <p>&copy; 2026 PT Cahaya Langit (General Contractor & Supplier). All rights reserved.</p>
+                    <div class="flex gap-6 mt-4 sm:mt-0">
+                        <a href="#" class="hover:text-champagne transition-colors">Kebijakan Privasi</a>
+                        <a href="#" class="hover:text-champagne transition-colors">Syarat & Ketentuan</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Custom Interactive Modal (No alert() used) -->
+    <div id="inquiry-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-obsidian/80 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
+        <div class="glass-card max-w-md w-full mx-4 p-8 rounded-3xl border border-champagne/30 shadow-luxury relative space-y-6 transform scale-95 transition-transform duration-300" id="modal-content">
+            <button onclick="closeModal()" class="absolute top-6 right-6 text-gray-400 hover:text-white text-xl">
+                <i class="bi bi-x-lg"></i>
+            </button>
+            <div class="space-y-2">
+                <span class="text-xs text-champagne font-semibold uppercase tracking-widest" id="modal-subtitle">Konsultasi Proyek</span>
+                <h3 class="font-heading text-2xl font-bold text-white" id="modal-title">Formulir Konsultasi Eksklusif</h3>
+                <p class="text-gray-400 text-sm">Isi detail di bawah ini dan tim ahli kami akan menghubungi Anda dalam waktu 1x24 jam.</p>
+            </div>
+
+            <form onsubmit="handleModalSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-medium text-gray-300 mb-1">Nama Lengkap</label>
+                    <input type="text" required placeholder="Nama Anda" class="w-full px-4 py-3 rounded-xl glass-card border border-white/10 text-white placeholder-gray-500 text-sm focus:outline-none focus:border-champagne">
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-gray-300 mb-1">Nomor Telepon / WhatsApp</label>
+                    <input type="tel" required placeholder="+62..." class="w-full px-4 py-3 rounded-xl glass-card border border-white/10 text-white placeholder-gray-500 text-sm focus:outline-none focus:border-champagne">
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-gray-300 mb-1">Detail Proyek / Kebutuhan</label>
+                    <textarea rows="3" required placeholder="Jelaskan kebutuhan konstruksi atau material Anda..." class="w-full px-4 py-3 rounded-xl glass-card border border-white/10 text-white placeholder-gray-500 text-sm focus:outline-none focus:border-champagne"></textarea>
+                </div>
+                <button type="submit" class="w-full py-3.5 rounded-xl gold-gradient-bg text-obsidian font-bold text-sm shadow-glow transition-transform hover:scale-105">
+                    Kirim Permintaan Konsultasi
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Message Toast (No alert() used) -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 glass-card px-6 py-4 rounded-2xl border border-champagne/40 shadow-luxury transform translate-y-20 opacity-0 transition-all duration-300 flex items-center gap-4">
+        <div class="w-10 h-10 rounded-xl gold-gradient-bg flex items-center justify-center text-obsidian font-bold text-lg">
+            <i class="bi bi-check-lg"></i>
+        </div>
+        <div>
+            <h4 class="font-heading font-bold text-white text-sm">Pesan Berhasil Dikirim!</h4>
+            <p class="text-xs text-gray-400" id="toast-msg">Tim PT Cahaya Langit akan segera menghubungi Anda.</p>
+        </div>
+    </div>
+
+    <!-- JavaScript Interactions -->
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Modal Logic
+        const modal = document.getElementById('inquiry-modal');
+        const modalContent = document.getElementById('modal-content');
+        const modalTitle = document.getElementById('modal-title');
+        const modalSubtitle = document.getElementById('modal-subtitle');
+
+        function openModal(serviceName) {
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modalContent.classList.remove('scale-95');
+                modalContent.classList.add('scale-100');
+            }, 10);
+            if(serviceName) {
+                modalSubtitle.textContent = serviceName;
+                modalTitle.textContent = `Konsultasi: ${serviceName}`;
+            }
+        }
+
+        function closeModal() {
+            modal.classList.add('opacity-0');
+            modalContent.classList.remove('scale-100');
+            modalContent.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        // Close modal when clicking outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Toast Notification Function
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-msg');
+            if(message) toastMsg.textContent = message;
+            
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 4000);
+        }
+
+        function handleModalSubmit(event) {
+            event.preventDefault();
+            closeModal();
+            showToast('Permintaan konsultasi Anda telah diterima oleh tim kami.');
+            event.target.reset();
+        }
+
+        function handleQuickSubmit(event) {
+            event.preventDefault();
+            showToast('Pesan cepat Anda berhasil terkirim ke info@cahayalangit.com.');
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>
